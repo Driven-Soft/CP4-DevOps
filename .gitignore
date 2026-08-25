@@ -1,0 +1,10 @@
+# Credenciais
+.env
+.env.*
+!.env.example
+
+# Api em .NET
+**/bin/
+**/obj/
+*.user
+*.suo

@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+
+  argos-oracle:
+    image: gvenzl/oracle-xe
+    container_name: argos-oracle
+
+    ports:
+      - "1521:1521"
+
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD}
+
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+
+    restart: always
+
+  argos-api:
+    build: .
+
+    container_name: argos-api
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__argosOracle: Data Source=argos-oracle:1521/XEPDB1;User Id=system;Password=${ORACLE_PASSWORD};
+
+    depends_on:
+      - argos-oracle
+
+    restart: always
+
+volumes:
+  oracle_data:

@@ -3,7 +3,10 @@ version: '3.9'
 services:
 
   argos-oracle:
-    image: gvenzl/oracle-xe
+    build: 
+      context: .
+      dockerfile: docker/database/Dockerfile
+
     container_name: argos-oracle
 
     ports:
@@ -18,8 +21,9 @@ services:
     restart: always
 
   argos-api:
-    build: .
-
+    build: 
+      context: .
+      dockerfile: docker/app/Dockerfile
     container_name: argos-api
 
     ports:

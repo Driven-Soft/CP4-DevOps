@@ -14,8 +14,8 @@ public class OcorrenciaConfiguration : IEntityTypeConfiguration<Ocorrencia>
         builder.Property(x => x.Titulo).IsRequired().HasMaxLength(160);
         builder.Property(x => x.Descricao).IsRequired().HasMaxLength(2000);
         builder.Property(x => x.Bairro).HasMaxLength(120);
-        builder.Property(x => x.Latitude).IsRequired().HasColumnType("BINARY_DOUBLE");
-        builder.Property(x => x.Longitude).IsRequired().HasColumnType("BINARY_DOUBLE");
+        builder.Property(x => x.Latitude).IsRequired();
+        builder.Property(x => x.Longitude).IsRequired();
         builder.Property(x => x.NivelRisco).HasConversion<string>().HasMaxLength(10).IsRequired();
         builder.Property(x => x.Status).HasConversion<string>().HasMaxLength(20).IsRequired();
         builder.Property(x => x.DataCriacao).IsRequired();

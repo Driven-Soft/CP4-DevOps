@@ -14,9 +14,9 @@ public class ZonaRiscoConfiguration : IEntityTypeConfiguration<ZonaRisco>
         builder.Property(x => x.Nome).IsRequired().HasMaxLength(120);
         builder.Property(x => x.Regiao).HasMaxLength(40);
         builder.Property(x => x.Cidade).IsRequired().HasMaxLength(120);
-        builder.Property(x => x.Estado).IsRequired().HasMaxLength(2).IsFixedLength(); // NCHAR(2)
-        builder.Property(x => x.Latitude).IsRequired().HasColumnType("BINARY_DOUBLE");
-        builder.Property(x => x.Longitude).IsRequired().HasColumnType("BINARY_DOUBLE");
+        builder.Property(x => x.Estado).IsRequired().HasMaxLength(2).IsFixedLength();
+        builder.Property(x => x.Latitude).IsRequired();
+        builder.Property(x => x.Longitude).IsRequired();
         builder.Property(x => x.Descricao).HasMaxLength(300);
         builder.Property(x => x.NivelRiscoAtual).HasConversion<string>().HasMaxLength(10).IsRequired();
         builder.Property(x => x.Ativa).IsRequired();

@@ -67,11 +67,11 @@ docker build \
 
 
 # ---------------------------------------------------------
-# Build do Oracle
+# Build do MySQL
 # ---------------------------------------------------------
 
 echo ""
-echo "Construindo imagem do Oracle..."
+echo "Construindo imagem do MySQL..."
 
 docker build \
     -f docker/database/Dockerfile \
@@ -107,11 +107,11 @@ docker push \
 
 
 # ---------------------------------------------------------
-# Push Oracle
+# Push MySQL
 # ---------------------------------------------------------
 
 echo ""
-echo "Enviando Oracle para o ACR..."
+echo "Enviando MySQL para o ACR..."
 
 docker push \
     "$ACR_LOGIN_SERVER/$DB_IMAGE:$TAG"

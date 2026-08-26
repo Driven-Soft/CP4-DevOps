@@ -17,17 +17,17 @@ ACR_NAME="${RM}argosacr"
 # Nome deve usar apenas letras minúsculas e números
 STORAGE_ACCOUNT="${RM}argosdata"
 
-FILE_SHARE="oracle-argos-volume"
+FILE_SHARE="mysql-argos-volume"
 
 # Imagens
 APP_IMAGE="${RM}-argos-api"
-DB_IMAGE="${RM}-argos-oracle"
+DB_IMAGE="${RM}-argos-mysql"
 TAG="v1"
 
 # Azure Container Instances
 APP_ACI="${RM}-argos-api"
-DB_ACI="${RM}-argos-oracle"
+DB_ACI="${RM}-argos-mysql"
 
 # DNS públicos
 APP_DNS="${RM}-argos-api"
-DB_DNS="${RM}-argos-oracle"
+DB_DNS="${RM}-argos-mysql"

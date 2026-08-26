@@ -27,44 +27,44 @@ source "$REPO_ROOT/.env"
 set +a
 
 
-if [ -z "${ORACLE_PASSWORD:-}" ]; then
-    echo "ERRO: ORACLE_PASSWORD não definida no .env."
+if [ -z "${MYSQL_PASSWORD:-}" ]; then
+    echo "ERRO: MYSQL_PASSWORD não definida no .env."
     exit 1
 fi
 
 
 # ---------------------------------------------------------
-# Verifica se o ACI Oracle existe
+# Verifica se o ACI MySQL existe
 # ---------------------------------------------------------
 
 if ! az container show \
     --resource-group "$RESOURCE_GROUP" \
     --name "$DB_ACI" &>/dev/null; then
 
-    echo "ERRO: ACI Oracle '$DB_ACI' não encontrado."
+    echo "ERRO: ACI MySQL '$DB_ACI' não encontrado."
     echo "Execute primeiro: azure/03-deploy-database.sh"
     exit 1
 fi
 
 
 # ---------------------------------------------------------
-# Recupera FQDN do Oracle
+# Recupera FQDN do MySQL
 # ---------------------------------------------------------
 
-ORACLE_FQDN=$(az container show \
+MYSQL_FQDN=$(az container show \
     --resource-group "$RESOURCE_GROUP" \
     --name "$DB_ACI" \
     --query ipAddress.fqdn \
     --output tsv)
 
 
-if [ -z "$ORACLE_FQDN" ]; then
-    echo "ERRO: não foi possível recuperar o FQDN do Oracle."
+if [ -z "$MYSQL_FQDN" ]; then
+    echo "ERRO: não foi possível recuperar o FQDN do MySQL."
     exit 1
 fi
 
-echo "Oracle disponível em:"
-echo "$ORACLE_FQDN:1521"
+echo "MySQL disponível em:"
+echo "$MYSQL_FQDN:3306"
 
 
 # ---------------------------------------------------------
@@ -72,7 +72,7 @@ echo "$ORACLE_FQDN:1521"
 # O código da API NÃO precisa ser alterado.
 # ---------------------------------------------------------
 
-CONNECTION_STRING="Data Source=${ORACLE_FQDN}:1521/XEPDB1;User Id=system;Password=${ORACLE_PASSWORD};"
+CONNECTION_STRING="Server=${MYSQL_FQDN};Port=3306;Database=argos;User=argos;Password=${MYSQL_PASSWORD}"
 
 
 # ---------------------------------------------------------
@@ -150,7 +150,7 @@ az container create \
     --environment-variables \
         ASPNETCORE_URLS="http://+:8080" \
     --secure-environment-variables \
-        ConnectionStrings__ArgosOracle="$CONNECTION_STRING" \
+        ConnectionStrings__ArgosMySql="$CONNECTION_STRING" \
     --restart-policy Always
 
 

@@ -9,7 +9,7 @@ source "$SCRIPT_DIR/00_config_geral.sh"
 
 
 echo "=========================================="
-echo "ARGOS - DEPLOY DO ORACLE NO ACI"
+echo "ARGOS - DEPLOY DO MYSQL NO ACI"
 echo "=========================================="
 
 
@@ -28,8 +28,8 @@ source "$REPO_ROOT/.env"
 set +a
 
 
-if [ -z "${ORACLE_PASSWORD:-}" ]; then
-    echo "ERRO: ORACLE_PASSWORD não definida no .env."
+if [ -z "${MYSQL_PASSWORD:-}" ]; then
+    echo "ERRO: MYSQL_PASSWORD não definida no .env."
     exit 1
 fi
 
@@ -111,10 +111,10 @@ fi
 
 
 # ---------------------------------------------------------
-# Cria o ACI do Oracle
+# Cria o ACI do MySQL
 # ---------------------------------------------------------
 
-echo "Criando ACI Oracle..."
+echo "Criando ACI MySQL..."
 
 MSYS_NO_PATHCONV=1 az container create \
     --resource-group "$RESOURCE_GROUP" \
@@ -125,22 +125,25 @@ MSYS_NO_PATHCONV=1 az container create \
     --os-type Linux \
     --ip-address Public \
     --dns-name-label "$DB_DNS" \
-    --ports 1521 \
+    --ports 3306 \
     --registry-login-server "$ACR_LOGIN_SERVER" \
     --registry-username "$ACR_USERNAME" \
     --registry-password "$ACR_PASSWORD" \
     --azure-file-volume-account-name "$STORAGE_ACCOUNT" \
     --azure-file-volume-account-key "$STORAGE_KEY" \
     --azure-file-volume-share-name "$FILE_SHARE" \
-    --azure-file-volume-mount-path /opt/oracle/oradata \
+    --azure-file-volume-mount-path /var/lib/mysql \
     --secure-environment-variables \
-        ORACLE_PASSWORD="$ORACLE_PASSWORD" \
+        MYSQL_DATABASE="argos" \
+        MYSQL_USER="argos" \
+        MYSQL_PASSWORD="$MYSQL_PASSWORD" \
+        MYSQL_ROOT_PASSWORD="$MYSQL_PASSWORD" \
     --restart-policy Never
 
 
 echo ""
 echo "=========================================="
-echo "ACI ORACLE CRIADO"
+echo "ACI MYSQL CRIADO"
 echo "=========================================="
 
 az container show \

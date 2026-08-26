@@ -110,11 +110,9 @@ else
     echo "Storage Account '$STORAGE_ACCOUNT' já existe."
 fi
 
-connection_string=$(az storage account show-connection-string --name $STORAGE_ACCOUNT --resource-group $RESOURCE_GROUP --query connectionString --output tsv)
-
 # ---------------------------------------------------------
 # Azure File Share
-# Volume persistente do Oracle
+# Volume persistente do MySQL
 # ---------------------------------------------------------
 
 echo "Verificando File Share '$FILE_SHARE'..."
@@ -124,8 +122,7 @@ FILE_SHARE_EXISTS=$(az storage share-rm exists \
     --storage-account "$STORAGE_ACCOUNT" \
     --name "$FILE_SHARE" \
     --query exists \
-    --output tsv) \
-    --connection-string "$connection_string"
+    --output tsv)
 
 if [ "$FILE_SHARE_EXISTS" != "true" ]; then
 

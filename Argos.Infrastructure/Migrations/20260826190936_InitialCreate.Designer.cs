@@ -3,16 +3,16 @@ using System;
 using Argos.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Oracle.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
 namespace Argos.Infrastructure.Migrations
 {
     [DbContext(typeof(ArgosContext))]
-    [Migration("20260602210757_InitialCreate")]
+    [Migration("20260826190936_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -21,50 +21,50 @@ namespace Argos.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "9.0.14")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
             modelBuilder.Entity("Argos.Domain.Entities.Alerta", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("NUMBER(1)");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasMaxLength(2000)
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("varchar(2000)");
 
                     b.Property<DateTime?>("FimVigencia")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime?>("InicioVigencia")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NivelAlerta")
                         .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("NVARCHAR2(10)");
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasMaxLength(160)
-                        .HasColumnType("NVARCHAR2(160)");
+                        .HasColumnType("varchar(160)");
 
                     b.Property<int?>("UsuarioCriadorId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.Property<int>("ZonaRiscoId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -83,26 +83,26 @@ namespace Argos.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("NUMBER(1)");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Mensagem")
                         .IsRequired()
                         .HasMaxLength(1000)
-                        .HasColumnType("NVARCHAR2(1000)");
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<int>("OcorrenciaId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -117,29 +117,29 @@ namespace Argos.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Acao")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("NVARCHAR2(20)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<int>("AlertaId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.Property<string>("DadosAntes")
-                        .HasColumnType("CLOB");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("DadosDepois")
-                        .HasColumnType("CLOB");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -154,57 +154,57 @@ namespace Argos.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Bairro")
                         .HasMaxLength(120)
-                        .HasColumnType("NVARCHAR2(120)");
+                        .HasColumnType("varchar(120)");
 
                     b.Property<DateTime?>("DataAtualizacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasMaxLength(2000)
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("varchar(2000)");
 
                     b.Property<double>("Latitude")
-                        .HasColumnType("BINARY_DOUBLE");
+                        .HasColumnType("double");
 
                     b.Property<double>("Longitude")
-                        .HasColumnType("BINARY_DOUBLE");
+                        .HasColumnType("double");
 
                     b.Property<string>("NivelRisco")
                         .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("NVARCHAR2(10)");
+                        .HasColumnType("varchar(10)");
 
                     b.Property<DateTime?>("ResolvidoEm")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("NVARCHAR2(20)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<int>("TipoOcorrenciaId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasMaxLength(160)
-                        .HasColumnType("NVARCHAR2(160)");
+                        .HasColumnType("varchar(160)");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("ZonaRiscoId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -226,26 +226,26 @@ namespace Argos.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("NUMBER(1)");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Chave")
                         .IsRequired()
                         .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<string>("Descricao")
                         .HasMaxLength(200)
-                        .HasColumnType("NVARCHAR2(200)");
+                        .HasColumnType("varchar(200)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(60)
-                        .HasColumnType("NVARCHAR2(60)");
+                        .HasColumnType("varchar(60)");
 
                     b.HasKey("Id");
 
@@ -259,42 +259,42 @@ namespace Argos.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("NUMBER(1)");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(180)
-                        .HasColumnType("NVARCHAR2(180)");
+                        .HasColumnType("varchar(180)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(120)
-                        .HasColumnType("NVARCHAR2(120)");
+                        .HasColumnType("varchar(120)");
 
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("NVARCHAR2(100)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Telefone")
                         .HasMaxLength(20)
-                        .HasColumnType("NVARCHAR2(20)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("TipoUsuario")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("NVARCHAR2(20)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<DateTime?>("UltimoAcessoEm")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -308,53 +308,53 @@ namespace Argos.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativa")
-                        .HasColumnType("NUMBER(1)");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("AtualizadoEm")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Cidade")
                         .IsRequired()
                         .HasMaxLength(120)
-                        .HasColumnType("NVARCHAR2(120)");
+                        .HasColumnType("varchar(120)");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Descricao")
                         .HasMaxLength(300)
-                        .HasColumnType("NVARCHAR2(300)");
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Estado")
                         .IsRequired()
                         .HasMaxLength(2)
-                        .HasColumnType("NCHAR(2)")
+                        .HasColumnType("char(2)")
                         .IsFixedLength();
 
                     b.Property<double>("Latitude")
-                        .HasColumnType("BINARY_DOUBLE");
+                        .HasColumnType("double");
 
                     b.Property<double>("Longitude")
-                        .HasColumnType("BINARY_DOUBLE");
+                        .HasColumnType("double");
 
                     b.Property<string>("NivelRiscoAtual")
                         .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("NVARCHAR2(10)");
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(120)
-                        .HasColumnType("NVARCHAR2(120)");
+                        .HasColumnType("varchar(120)");
 
                     b.Property<string>("Regiao")
                         .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.HasKey("Id");
 

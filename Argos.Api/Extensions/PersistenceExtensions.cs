@@ -2,12 +2,13 @@ using Argos.Application.Interfaces.Repositories;
 using Argos.Infrastructure.Persistence;
 using Argos.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace Argos.Api.Extensions;
 
 /// <summary>
-/// Registro manual dos repositórios e do <see cref="ArgosContext"/> (Oracle).
-/// A connection string vem de <c>ConnectionStrings:ArgosOracle</c>.
+/// Registro manual dos repositórios e do <see cref="ArgosContext"/> (MySQL).
+/// A connection string vem de <c>ConnectionStrings:ArgosMySql</c>.
 /// </summary>
 public static class PersistenceExtensions
 {
@@ -25,12 +26,11 @@ public static class PersistenceExtensions
 
     public static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("ArgosOracle")
-            ?? throw new InvalidOperationException("Connection string 'ArgosOracle' não configurada.");
+        var connectionString = configuration.GetConnectionString("ArgosMySql")
+            ?? throw new InvalidOperationException("Connection string 'ArgosMySql' não configurada.");
 
         services.AddDbContext<ArgosContext>(options =>
-            options.UseOracle(connectionString, oracle =>
-                oracle.UseOracleSQLCompatibility(OracleSQLCompatibility.DatabaseVersion19)));
+            options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 0))));
         return services;
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Argos.Infrastructure.Persistence;
 
 /// <summary>
-/// Contexto EF Core do Argos (Oracle). Um <see cref="DbSet{TEntity}"/> por entidade;
+/// Contexto EF Core do Argos (MySQL). Um <see cref="DbSet{TEntity}"/> por entidade;
 /// o mapeamento Fluent fica nas <c>IEntityTypeConfiguration</c> da pasta
 /// <c>Persistence/Configurations</c>, descobertas automaticamente.
 /// </summary>
@@ -24,9 +24,4 @@ public class ArgosContext(DbContextOptions<ArgosContext> options) : DbContext(op
         base.OnModelCreating(modelBuilder);
     }
 
-    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
-    {
-        configurationBuilder.Properties<bool>().HaveColumnType("NUMBER(1)");
-        base.ConfigureConventions(configurationBuilder);
-    }
 }

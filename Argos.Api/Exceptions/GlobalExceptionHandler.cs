@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Oracle.ManagedDataAccess.Client;
+using MySqlConnector;
 
 namespace Argos.Api.Exceptions;
 
@@ -11,7 +11,7 @@ namespace Argos.Api.Exceptions;
 /// <item><see cref="ArgumentException"/>/<see cref="InvalidOperationException"/> → 400</item>
 /// <item><see cref="KeyNotFoundException"/> → 404</item>
 /// <item><see cref="UnauthorizedAccessException"/> → 401</item>
-/// <item><see cref="OracleException"/> → 500 ("Banco de dados indisponível")</item>
+/// <item><see cref="MySqlException"/> → 500 ("Banco de dados indisponível")</item>
 /// </list>
 /// </summary>
 public class GlobalExceptionHandler(
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler(
         InvalidOperationException => (StatusCodes.Status400BadRequest, "Operação inválida"),
         KeyNotFoundException => (StatusCodes.Status404NotFound, "Recurso não encontrado"),
         UnauthorizedAccessException => (StatusCodes.Status401Unauthorized, "Não autorizado"),
-        OracleException => (StatusCodes.Status500InternalServerError, "Banco de dados indisponível"),
+        MySqlException => (StatusCodes.Status500InternalServerError, "Banco de dados indisponível"),
         _ => (StatusCodes.Status500InternalServerError, "Erro interno do servidor")
     };
 }

@@ -1,22 +1,23 @@
-version: '3.9'
-
 services:
 
-  argos-oracle:
-    build: 
+  argos-mysql:
+    build:
       context: .
       dockerfile: docker/database/Dockerfile
 
-    container_name: argos-oracle
+    container_name: argos-mysql
 
     ports:
-      - "1521:1521"
+      - "3306:3306"
 
     environment:
-      ORACLE_PASSWORD: ${ORACLE_PASSWORD}
+      MYSQL_DATABASE: argos
+      MYSQL_USER: argos
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
 
     volumes:
-      - oracle_data:/opt/oracle/oradata
+      - mysql_data:/var/lib/mysql
 
     restart: always
 
@@ -31,12 +32,12 @@ services:
 
     environment:
       ASPNETCORE_URLS: http://+:8080
-      ConnectionStrings__argosOracle: Data Source=argos-oracle:1521/XEPDB1;User Id=system;Password=${ORACLE_PASSWORD};
+      ConnectionStrings__ArgosMySql: Server=argos-mysql;Port=3306;Database=argos;User=argos;Password=${MYSQL_PASSWORD}
 
     depends_on:
-      - argos-oracle
+      - argos-mysql
 
     restart: always
 
 volumes:
-  oracle_data:
+  mysql_data:

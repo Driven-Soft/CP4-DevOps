@@ -12,8 +12,8 @@ public class LogAlertaConfiguration : IEntityTypeConfiguration<LogAlerta>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Acao).HasConversion<string>().HasMaxLength(20).IsRequired();
-        builder.Property(x => x.DadosAntes).HasColumnType("CLOB");
-        builder.Property(x => x.DadosDepois).HasColumnType("CLOB");
+        builder.Property(x => x.DadosAntes);
+        builder.Property(x => x.DadosDepois);
         builder.Property(x => x.DataCriacao).IsRequired();
 
         builder.HasOne(x => x.Alerta).WithMany()

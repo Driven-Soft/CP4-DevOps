@@ -730,11 +730,13 @@ Docker → ACR → ACI
 
 # Integrantes
 
-* **Representante — RM 564723:** [NOME]
-* [NOME — RM]
-* [NOME — RM]
+* **Representante — RM 564723:** Felipe Bezerra Beatrici
+* RM563717 - Max Hayashi Batista
+* RM565119 - Henrique Cunha Torres
+* RM561365 - Yasmin Nathalin Miranda dos Santos
+* RM562118 - Lucas da Silva Lima
 
 ## Links da entrega
 
-* **Repositório GitHub:** [INSERIR LINK]
+* **Repositório GitHub:** https://github.com/Driven-Soft/CP4-DevOps.git
 * **Vídeo:** [INSERIR LINK]

@@ -18,8 +18,13 @@ if [ "$(id -u)" -eq 0 ]; then
 
     echo "ARGOS: verificando acesso do usuário oracle ao volume..."
 
+    # UID/GID 54321 = usuário 'oracle'. Usamos numérico porque o grupo
+    # primário do oracle (GID 54321) não possui entrada correspondente
+    # em /etc/group nesta imagem — chroot --userspec com nome falha
+    # com "invalid group".
+
     # Testa efetivamente escrita usando o usuário Oracle
-    if ! runuser -u oracle -- sh -c \
+    if ! chroot --userspec=54321:54321 / sh -c \
         "touch '$ORACLE_DATA/.argos-write-test' && rm '$ORACLE_DATA/.argos-write-test'"; then
 
         echo "ERRO: usuário oracle não consegue escrever em $ORACLE_DATA."
@@ -32,10 +37,7 @@ if [ "$(id -u)" -eq 0 ]; then
     echo "ARGOS: volume acessível pelo usuário oracle."
     echo "ARGOS: iniciando Oracle como usuário oracle..."
 
-    exec runuser \
-        -u oracle \
-        --preserve-environment \
-        -- /opt/oracle/container-entrypoint.sh "$@"
+    exec chroot --userspec=54321:54321 / /opt/oracle/container-entrypoint.sh "$@"
 fi
 
 # Ambiente local ou outro ambiente que já esteja executando como oracle

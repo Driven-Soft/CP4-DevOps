@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "endpoint": "/alertas/1",
+  "expectedStatus": 200,
+  "body": null,
+  "note": "Substituir 1 pelo ID retornado no POST."
+}

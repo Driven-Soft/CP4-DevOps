@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "endpoint": "/ocorrencias/1",
+  "expectedStatus": 200,
+  "body": null,
+  "note": "Substituir 1 pelo ID da ocorrência criada."
+}

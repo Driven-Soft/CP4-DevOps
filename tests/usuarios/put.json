@@ -1,0 +1,13 @@
+{
+  "method": "PUT",
+  "endpoint": "/usuarios/1",
+  "expectedStatus": 200,
+  "body": {
+    "nome": "Usuario Teste CP Atualizado",
+    "senha": "Teste456",
+    "telefone": "11999990000",
+    "tipoUsuario": "CIDADAO",
+    "ativo": true
+  },
+  "note": "Substituir 1 pelo ID retornado no POST. Requer rota PUT habilitada no controller."
+}

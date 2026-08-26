@@ -1,0 +1,7 @@
+{
+  "method": "DELETE",
+  "endpoint": "/ocorrencias/1/comentarios/1",
+  "expectedStatus": 204,
+  "body": null,
+  "note": "Primeiro 1 = ocorrenciaId; segundo 1 = comentarioId. Soft delete."
+}

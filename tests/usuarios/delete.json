@@ -1,0 +1,7 @@
+{
+  "method": "DELETE",
+  "endpoint": "/usuarios/1",
+  "expectedStatus": 204,
+  "body": null,
+  "note": "Soft delete: validar no banco que ATIVO ficou false/0."
+}

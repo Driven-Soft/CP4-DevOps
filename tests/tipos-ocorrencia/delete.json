@@ -1,0 +1,7 @@
+{
+  "method": "DELETE",
+  "endpoint": "/tipos-ocorrencia/1",
+  "expectedStatus": 204,
+  "body": null,
+  "note": "Soft delete: validar ATIVO no banco."
+}

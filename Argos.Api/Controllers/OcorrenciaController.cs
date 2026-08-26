@@ -38,6 +38,7 @@ public class OcorrenciaController(IOcorrenciaService service) : ControllerBase
     }
 
     /// <summary>Atualiza status/nível/zona de uma ocorrência (defesa civil).</summary>
+    [HttpPut("{id:int}")]
     [HttpPatch("{id:int}")]
     [ProducesResponseType(typeof(OcorrenciaResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

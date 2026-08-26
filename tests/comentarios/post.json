@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "endpoint": "/ocorrencias/1/comentarios",
+  "expectedStatus": 201,
+  "body": {
+    "mensagem": "Comentario criado para o teste do checkpoint.",
+    "usuarioId": 1
+  },
+  "note": "Substituir ocorrenciaId e usuarioId por IDs válidos."
+}

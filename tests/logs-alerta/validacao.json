@@ -1,0 +1,10 @@
+{
+  "table": "LOGS_ALERTA",
+  "apiCrudExposed": false,
+  "description": "Tabela de auditoria interna criada automaticamente pelas operações de alerta.",
+  "generatedBy": [
+    "POST /alertas quando usuarioCriadorId é informado",
+    "PUT/PATCH /alertas/{id} quando usuarioId é informado"
+  ],
+  "databaseValidation": "SELECT * FROM LOGS_ALERTA ORDER BY ID DESC;"
+}

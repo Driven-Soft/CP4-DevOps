@@ -1,0 +1,17 @@
+{
+  "method": "PUT",
+  "endpoint": "/zonas-risco/1",
+  "expectedStatus": 200,
+  "body": {
+    "nome": "Zona Teste CP Atualizada",
+    "regiao": "Centro",
+    "cidade": "Sao Paulo",
+    "estado": "SP",
+    "latitude": -23.551,
+    "longitude": -46.634,
+    "descricao": "Zona atualizada durante o teste de PUT.",
+    "nivelRiscoAtual": "ALTO",
+    "ativa": true
+  },
+  "note": "Substituir 1 pelo ID retornado no POST. Requer rota PUT habilitada no controller."
+}

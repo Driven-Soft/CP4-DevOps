@@ -1,0 +1,7 @@
+{
+  "method": "DELETE",
+  "endpoint": "/ocorrencias/1",
+  "expectedStatus": 204,
+  "body": null,
+  "note": "Exclusão física; validar por SELECT que o registro não existe mais."
+}

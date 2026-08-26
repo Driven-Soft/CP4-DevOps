@@ -37,6 +37,7 @@ public class ZonaRiscoController(IZonaRiscoService service) : ControllerBase
     }
 
     /// <summary>Atualiza parcialmente uma zona de risco.</summary>
+    [HttpPut("{id:int}")]
     [HttpPatch("{id:int}")]
     [ProducesResponseType(typeof(ZonaRiscoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

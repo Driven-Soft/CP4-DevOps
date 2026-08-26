@@ -1,0 +1,7 @@
+{
+  "method": "DELETE",
+  "endpoint": "/zonas-risco/1",
+  "expectedStatus": 204,
+  "body": null,
+  "note": "Soft delete: validar ATIVA no banco."
+}

@@ -1,0 +1,14 @@
+{
+  "project": "Argos - CP DevOps ACR/ACI",
+  "purpose": "Arquivos JSON usados/documentados nos testes de GET, POST, PUT e DELETE.",
+  "resources": [
+    "usuarios",
+    "tipos-ocorrencia",
+    "zonas-risco",
+    "ocorrencias",
+    "alertas",
+    "comentarios",
+    "logs-alerta"
+  ],
+  "important": "Os IDs de exemplo devem ser substituídos pelos IDs reais retornados pelos POSTs no ambiente da gravação."
+}

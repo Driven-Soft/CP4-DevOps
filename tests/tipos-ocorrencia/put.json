@@ -1,0 +1,11 @@
+{
+  "method": "PUT",
+  "endpoint": "/tipos-ocorrencia/1",
+  "expectedStatus": 200,
+  "body": {
+    "nome": "Enchente Teste CP Atualizado",
+    "descricao": "Descricao atualizada durante o teste de PUT.",
+    "ativo": true
+  },
+  "note": "A chave não é alterada pelo DTO atual. Requer rota PUT habilitada no controller."
+}

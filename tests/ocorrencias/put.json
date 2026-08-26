@@ -1,0 +1,11 @@
+{
+  "method": "PUT",
+  "endpoint": "/ocorrencias/1",
+  "expectedStatus": 200,
+  "body": {
+    "status": "EQUIPE_A_CAMINHO",
+    "nivelRisco": "ALTO",
+    "zonaRiscoId": 1
+  },
+  "note": "Substituir IDs conforme o ambiente. Requer rota PUT habilitada no controller."
+}

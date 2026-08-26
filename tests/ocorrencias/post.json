@@ -1,0 +1,17 @@
+{
+  "method": "POST",
+  "endpoint": "/ocorrencias",
+  "expectedStatus": 201,
+  "body": {
+    "titulo": "Ocorrencia Teste CP",
+    "descricao": "Ocorrencia criada para demonstrar persistencia e CRUD.",
+    "tipoOcorrenciaId": 1,
+    "usuarioId": 1,
+    "latitude": -23.5505,
+    "longitude": -46.6333,
+    "nivelRisco": "MEDIO",
+    "zonaRiscoId": 1,
+    "bairro": "Centro"
+  },
+  "note": "Atualizar tipoOcorrenciaId, usuarioId e zonaRiscoId com IDs válidos."
+}

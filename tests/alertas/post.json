@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "endpoint": "/alertas",
+  "expectedStatus": 201,
+  "body": {
+    "titulo": "Alerta Teste CP",
+    "descricao": "Alerta criado durante a demonstracao do checkpoint.",
+    "nivelAlerta": "ALTO",
+    "zonaRiscoId": 1,
+    "usuarioCriadorId": 1,
+    "inicioVigencia": null,
+    "fimVigencia": null
+  },
+  "note": "Usar uma zona e um usuário válidos; idealmente DEFESA_CIVIL para gerar LOGS_ALERTA."
+}

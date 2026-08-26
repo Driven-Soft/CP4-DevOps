@@ -42,6 +42,7 @@ public class AlertaController(IAlertaService service) : ControllerBase
     }
 
     /// <summary>Atualiza/ativa/desativa um alerta (defesa civil).</summary>
+    [HttpPut("{id:int}")]
     [HttpPatch("{id:int}")]
     [ProducesResponseType(typeof(AlertaResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

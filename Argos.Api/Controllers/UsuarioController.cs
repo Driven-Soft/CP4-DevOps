@@ -37,6 +37,7 @@ public class UsuarioController(IUsuarioService service) : ControllerBase
     }
 
     /// <summary>Atualiza parcialmente um usuário.</summary>
+    [HttpPut("{id:int}")]
     [HttpPatch("{id:int}")]
     [ProducesResponseType(typeof(UsuarioResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

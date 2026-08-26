@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "endpoint": "/zonas-risco",
+  "expectedStatus": 201,
+  "body": {
+    "nome": "Zona Teste CP",
+    "cidade": "Sao Paulo",
+    "estado": "SP",
+    "latitude": -23.5505,
+    "longitude": -46.6333,
+    "regiao": "Central",
+    "descricao": "Zona criada para demonstracao do checkpoint.",
+    "nivelRiscoAtual": "MEDIO"
+  }
+}

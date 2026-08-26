@@ -1,0 +1,6 @@
+{
+  "method": "PUT",
+  "supported": false,
+  "reason": "A API atual não possui endpoint de atualização de comentários. O controller expõe apenas GET, POST e DELETE.",
+  "actionBeforeSubmission": "Decidir se será implementado PUT para cumprimento literal da rubrica ou documentar esta exceção."
+}

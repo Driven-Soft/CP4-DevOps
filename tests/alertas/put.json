@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "endpoint": "/alertas/1",
+  "expectedStatus": 200,
+  "body": {
+    "titulo": "Alerta Teste CP Atualizado",
+    "descricao": "Alerta atualizado durante o teste de PUT.",
+    "nivelAlerta": "CRITICO",
+    "inicioVigencia": null,
+    "fimVigencia": null,
+    "ativo": true,
+    "usuarioId": 1
+  },
+  "note": "usuarioId identifica o autor da alteração para auditoria. Requer rota PUT habilitada no controller."
+}

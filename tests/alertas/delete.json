@@ -1,0 +1,7 @@
+{
+  "method": "DELETE",
+  "endpoint": "/alertas/1",
+  "expectedStatus": 204,
+  "body": null,
+  "note": "Soft delete: validar ATIVO=false/0; LOGS_ALERTA não é criado no Delete atual."
+}

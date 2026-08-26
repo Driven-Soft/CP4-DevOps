@@ -37,6 +37,7 @@ public class TipoOcorrenciaController(ITipoOcorrenciaService service) : Controll
     }
 
     /// <summary>Atualiza parcialmente um tipo de ocorrência.</summary>
+    [HttpPut("{id:int}")]
     [HttpPatch("{id:int}")]
     [ProducesResponseType(typeof(TipoOcorrenciaResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

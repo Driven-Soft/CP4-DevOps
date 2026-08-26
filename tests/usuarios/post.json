@@ -1,0 +1,12 @@
+{
+  "method": "POST",
+  "endpoint": "/usuarios",
+  "expectedStatus": 201,
+  "body": {
+    "nome": "Usuario Teste CP",
+    "email": "usuario.cp564723@example.com",
+    "senha": "Teste123",
+    "telefone": "11987654321",
+    "tipoUsuario": "CIDADAO"
+  }
+}

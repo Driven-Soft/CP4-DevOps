@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "endpoint": "/tipos-ocorrencia",
+  "expectedStatus": 201,
+  "body": {
+    "nome": "Enchente Teste CP",
+    "chave": "enchente-teste-cp",
+    "descricao": "Tipo criado para demonstracao do checkpoint."
+  }
+}

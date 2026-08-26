@@ -185,7 +185,7 @@ No Windows, os scripts `.sh` podem ser executados utilizando Git Bash.
 
 Antes do deploy na Azure, as imagens devem ser construídas e testadas localmente.
 
-Na raiz do projeto:
+Na raiz do projeto, com o docker rodando na máquina:
 
 ```bash
 docker compose build

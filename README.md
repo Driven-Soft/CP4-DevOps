@@ -604,7 +604,7 @@ tests/json/
 
 # DDL
 
-O script de definição da estrutura do banco está disponível em:
+O script de definição da estrutura do banco foi gerado com base nas migrations da API .NET e está disponível em:
 
 ```text
 db/ddl.sql
@@ -655,8 +655,7 @@ O repositório disponibiliza apenas:
 .env.example
 ```
 
-como referência de configuração.
-
+como referência de configuração. Basta clonar o arquivo, mudar o nome para '.env' e alterar o conteúdo da senha para a senha desejada.
 ---
 
 # Principais recursos Azure

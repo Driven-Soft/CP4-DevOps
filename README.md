@@ -738,4 +738,4 @@ Docker → ACR → ACI
 ## Links da entrega
 
 * **Repositório GitHub:** https://github.com/Driven-Soft/CP4-DevOps.git
-* **Vídeo:** [INSERIR LINK]
+* **Vídeo:** https://youtu.be/4fl5zwnf2H4
